@@ -21,16 +21,21 @@ for (question of Object.keys(faqs)) {
     answerParagraph.textContent = faqs[question];
     answerParagraph.style.display = 'none';
 
-    questionTitle.addEventListener('click', function() {
+    questionTitle.addEventListener('click', openedQuestion);
+
+    function openedQuestion() {
         if (answerParagraph.style.display === 'none') {
             answerParagraph.style.display = 'block';
+            
             const iconPlus = document.createElement('img');
             iconPlus.src = '/assets/images/icon-plus.svg'
+
 
         } else {
             answerParagraph.style.display = 'none';
         }
-    });
+    }
+    
     qaContainer.append(questionTitle, answerParagraph);
     faqContainer.appendChild(qaContainer);
 }
