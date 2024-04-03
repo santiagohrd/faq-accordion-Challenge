@@ -6,8 +6,14 @@ const faqs = {
 }
 
 const faqContainer = document.createElement('div');
+faqContainer.className = 'questions-container';
+
+
 
 for (question of Object.keys(faqs)) {
+    const qaContainer = document.createElement('div');
+    qaContainer.className = 'questions-container acordion';
+
     const questionTitle = document.createElement('h3');
     const answerParagraph = document.createElement('p');
 
@@ -18,13 +24,15 @@ for (question of Object.keys(faqs)) {
     questionTitle.addEventListener('click', function() {
         if (answerParagraph.style.display === 'none') {
             answerParagraph.style.display = 'block';
+            const iconPlus = document.createElement('img');
+            iconPlus.src = '/assets/images/icon-plus.svg'
+
         } else {
             answerParagraph.style.display = 'none';
         }
     });
-
-    faqContainer.appendChild(questionTitle);
-    faqContainer.appendChild(answerParagraph);
+    qaContainer.append(questionTitle, answerParagraph);
+    faqContainer.appendChild(qaContainer);
 }
 
 document.body.appendChild(faqContainer);
